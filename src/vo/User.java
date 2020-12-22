@@ -3,9 +3,9 @@ package vo;
 public class User {
 	private String userId;
 	private String userName;
-	private String contact;
+	private int contact;
 	
-	public User(String userId, String userName, String contact) {
+	public User(String userId, String userName, int contact) {
 		this.userId = userId;
 		this.userName= userName;
 		this.contact = contact;
@@ -28,13 +28,23 @@ public class User {
 		this.userName = userName;
 	}
 
-	public String getContact() {
+	public int getContact() {
 		return contact;
 	}
 
-	public void setContact(String contact) {
+	public void setContact(int contact) {
 		this.contact = contact;
 	}
 	
+public String getUserIdInfo() {
+		
+		return "user Info   : "+userId;
+		
+	}
+public String getUserInfo() {
+	
+	return "user Info   : "+userId+"\t"+userName+"\t"+contact;
+	
+}
 
 }

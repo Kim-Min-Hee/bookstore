@@ -25,6 +25,10 @@ public class Book {
 		return "book Info   : "+title+"\t" + author+"\t"+ publisher+"\t" + range+"\t" + stock;
 		
 	}
+	
+//	public void setInfo() {
+//		return "book Info: "setTitle"
+//	}
 
 	
 

@@ -7,6 +7,7 @@ import javax.swing.plaf.synth.SynthOptionPaneUI;
 import service.BookService;
 import service.UserService;
 import vo.Book;
+import vo.User;
 
 public class BookStoreApp {
 
@@ -14,8 +15,9 @@ public class BookStoreApp {
 	public static void main(String[] args) {
 		
 		BookService service = new BookService();
+		UserService userService = new UserService();
 		while(true) {
-			System.out.println("1.userManu, 2.bookManu please check");
+			System.out.println("1.userManu, 2.bookManu 3. please check");
 			
 			Scanner scanner = new Scanner(System.in);
 			
@@ -26,12 +28,33 @@ public class BookStoreApp {
 				int userChoose= scanner.nextInt();
 				if(userChoose==1) {
 					System.out.println("memberRegistration");
-					UserService userService = new UserService();
-					
+					System.out.println("write userId");
+					scanner.nextLine();
+					String userId = scanner.nextLine();
+					System.out.println("write your name");
+					String userName = scanner.nextLine();
+					System.out.println("write your contact");
+					int contact = scanner.nextInt();
+					User user = new User(userId, userName, contact);
+					userService.insertUser(user);
 				}else if(userChoose==2) {
 					System.out.println("memberOut");
+					scanner.nextLine();
+					String mOut = scanner.nextLine();
+					userService.memberOut(mOut);
 				}else if(userChoose==3) {
 					System.out.println("memberCheck");
+					System.out.println("1. allcheck 2. conditionCheck");
+					int check = scanner.nextInt();
+					if(check==1) {
+						userService.selectAllUsers();
+					}else if(check==2) {
+						System.out.println("condition search!!");
+						System.out.println("1. userId 2. userName ");
+						int userCondition = scanner.nextInt();
+						userService.conditionUser(userCondition,scanner);
+						
+					}
 					
 				}
 			}else if(choose==2) {
@@ -68,6 +91,9 @@ public class BookStoreApp {
 						service.conditionRead(condition, scanner);
 					}else if(bookmenu==3){
 						System.out.println("Revision inquiry");
+						System.out.println("1. title 2. author 3. publisher");
+						int pick= scanner.nextInt();
+						service.pickRead(pick,scanner);
 					}
 					
 				}
