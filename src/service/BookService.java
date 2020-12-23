@@ -12,12 +12,12 @@ public class BookService {
 	
 	private static final char[] BookService = null;
 	private static final String Book = null;
-	private ArrayList<Book> saveBook = new ArrayList<Book>();
+	public ArrayList<Book> saveBook = new ArrayList<Book>();
 	
 	public BookService() {
 		Book b1 = new Book("Java standard","NamGoong","Hanbit Media",35000,3);
 		Book b2 = new Book("momo","Michael Ende","Flying dragon",15000,4);
-		Book b3 = new Book("momo","minhee","Flying dragon",15000,0);
+		Book b3 = new Book("momo","minhee","qw",15000,0);
 		Book b4 = new Book("Baekseok Authentic Poems","Hyungjin Ko","Creation and criticism",27000,7);
 		
 		saveBook.add(b1);

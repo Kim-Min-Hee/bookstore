@@ -20,7 +20,6 @@ public class UserService {
 			saveUser.add(u2);
 			saveUser.add(u3);
 			saveUser.add(u4);
-			saveUser.remove(User);
 			
 		}
 		public void insertUser(User user) {
@@ -62,10 +61,15 @@ public class UserService {
 			
 		}
 		
-		public void memberOut(String mOut) {
+		public void memberOut(String mOut, Scanner scanner) {
 			for(User u : saveUser) {
-				if(mOut.contains(u.getUserId())){
-					saveUser.remove(u);
+					for(int i=0;i<saveUser.size();i++) {
+						if(mOut.contains(u.getUserId())) {
+							saveUser.remove(i);
+							
+						}
+						
+					}
 					System.out.println(u.getUserInfo());
 				}
 				
@@ -74,6 +78,6 @@ public class UserService {
 			
 			
 		}
-		}
+		
 
 

@@ -5,6 +5,7 @@ import java.util.Scanner;
 import javax.swing.plaf.synth.SynthOptionPaneUI;
 
 import service.BookService;
+import service.RentBookService;
 import service.UserService;
 import vo.Book;
 import vo.User;
@@ -16,8 +17,9 @@ public class BookStoreApp {
 		
 		BookService service = new BookService();
 		UserService userService = new UserService();
+		RentBookService RentBookService = new RentBookService();
 		while(true) {
-			System.out.println("1.userManu, 2.bookManu 3. please check");
+			System.out.println("1.userManu, 2.bookManu 3. rentBook please check");
 			
 			Scanner scanner = new Scanner(System.in);
 			
@@ -41,7 +43,7 @@ public class BookStoreApp {
 					System.out.println("memberOut");
 					scanner.nextLine();
 					String mOut = scanner.nextLine();
-					userService.memberOut(mOut);
+					userService.memberOut(mOut, scanner);
 				}else if(userChoose==3) {
 					System.out.println("memberCheck");
 					System.out.println("1. allcheck 2. conditionCheck");
@@ -62,16 +64,16 @@ public class BookStoreApp {
 				int bookChoose= scanner.nextInt();
 				
 				if(bookChoose==1) {
-					System.out.println("enter book info");
+					System.out.println("enter the title of book");
 					scanner.nextLine();
 					String title = scanner.nextLine();
-					System.out.println("enter book info 1");
+					System.out.println("enter the author of book");
 					String author = scanner.nextLine();
-					System.out.println("enter book info 2");
+					System.out.println("enter the publisher of book");
 					String publisher = scanner. nextLine();
-					System.out.println("enter book info 3");
+					System.out.println("enter the price of book");
 					long price = scanner.nextLong();
-					System.out.println("enter book info 4");
+					System.out.println("enter the stock of book");
 					int stock = scanner.nextInt();
 					Book book = new Book(title, author, publisher, price, stock);
 					service.insertBook(book);
@@ -97,6 +99,18 @@ public class BookStoreApp {
 					}
 					
 				}
+			}else if(choose==3){
+				System.out.println("1. rent 2. return 3. search");
+				int decision = scanner.nextInt();
+				switch(decision) {
+					case 1 : 
+						System.out.println("???");
+						RentBookService.rentBook(decision);
+						
+						
+				}
+					
+				
 			}else {
 				System.out.println("The End");
 				break;
