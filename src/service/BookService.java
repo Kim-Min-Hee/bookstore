@@ -19,11 +19,13 @@ public class BookService {
 		Book b2 = new Book("momo","Michael Ende","Flying dragon",15000,4);
 		Book b3 = new Book("momo","minhee","qw",15000,0);
 		Book b4 = new Book("Baekseok Authentic Poems","Hyungjin Ko","Creation and criticism",27000,7);
+		Book b5 = new Book("abc","a","b",1000,5);
 		
 		saveBook.add(b1);
 		saveBook.add(b2);
 		saveBook.add(b3);
 		saveBook.add(b4);
+		saveBook.add(b5);
 	}
 	public void insertBook(Book book) {
 		System.out.println("[book save service]");
@@ -96,11 +98,11 @@ public class BookService {
 				case 4 : 
 					if(!minPrice.isEmpty()) {
 						int min= Integer.parseInt(minPrice);
-						if(c.getRange()>min && c.getRange()<=maxPrice) {
+						if(c.getPrice()>min && c.getPrice()<=maxPrice) {
 							System.out.println(c.getInfo());
 					}					
 					}else if(minPrice.isEmpty()){
-						if(c.getRange()<=maxPrice) {
+						if(c.getPrice()<=maxPrice) {
 							System.out.println(c.getInfo());
 					}					
 						count++;

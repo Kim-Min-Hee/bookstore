@@ -9,10 +9,10 @@ public class UserService {
 	
 	private static final char[] UserService = null;
 	private static final String User = null;
-	private ArrayList<User> saveUser = new ArrayList<User>();
+	public ArrayList<User> saveUser = new ArrayList<User>();
 
 		public UserService() {
-			User u1 = new User("me","kim min hee", 1234567890);
+			User u1 = new User("me","kim", 1234567890);
 			User u2 = new User("ryu","ryu hyung taeck",1234534);
 			User u3 = new User("kwon","kwon min seok",55555555);
 			User u4 = new User("KKo","kko kko",11111111);
@@ -62,16 +62,18 @@ public class UserService {
 		}
 		
 		public void memberOut(String mOut, Scanner scanner) {
-			for(User u : saveUser) {
 					for(int i=0;i<saveUser.size();i++) {
-						if(mOut.contains(u.getUserId())) {
+						if(mOut.contains(saveUser.get(i).getUserId())) {
 							saveUser.remove(i);
-							
 						}
+							
 						
 					}
-					System.out.println(u.getUserInfo());
-				}
+					for(int e =0; e<saveUser.size();e++) {
+						System.out.println(saveUser.get(e).getUserInfo());
+					}
+					
+						
 				
 				
 			}

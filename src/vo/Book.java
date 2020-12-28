@@ -5,24 +5,24 @@ public class Book {
 	private String title;
 	private String author;
 	private String publisher;
-	private long range;
+	private long price;
 	private int stock;
 	
 
 	
-	public Book(String title, String author, String publisher, long range, int stock) {
+	public Book(String title, String author, String publisher, long price, int stock) {
 		this.title= title;
 		this.author= author;
 		this.publisher= publisher;
-		this.range = range;
+		this.price = price;
 		this.stock = stock;
 		System.out.println("[System: new book ]");
-		System.out.println("[System: new book information: "+title + author + publisher + range + stock);
+		System.out.println("[System: new book information: "+title + author + publisher + price + stock);
 	}
 	
 	public String getInfo() {
 		
-		return "book Info   : "+title+"\t" + author+"\t"+ publisher+"\t" + range+"\t" + stock;
+		return "book Info   : "+title+"\t" + author+"\t"+ publisher+"\t" + price+"\t" + stock;
 		
 	}
 	
@@ -62,13 +62,13 @@ public class Book {
 	}
 
 
-	public long getRange() {
-		return range;
+	public long getPrice() {
+		return price;
 	}
 
 
-	public void setRange(long range) {
-		this.range = range;
+	public void setPrice(long price) {
+		this.price = price;
 	}
 
 

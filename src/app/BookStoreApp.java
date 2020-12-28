@@ -104,23 +104,75 @@ public class BookStoreApp {
 				int decision = scanner.nextInt();
 				switch(decision) {
 					case 1 : 
-						System.out.println("???");
-						RentBookService.rentBook(decision);
+						System.out.println("Please Enter the book you want to borrow and your ID name");
+						System.out.println("the title");
+						scanner.nextLine();
+						String borrowBookT= scanner.nextLine();
+						System.out.println("the author");
+						String borrowBookA = scanner.nextLine();
+						System.out.println("the publisher");
+						String borrowBookP = scanner.nextLine();
+						System.out.println("your Id");
+						String bId = scanner.nextLine();
+						System.out.println("your name");
+						String bName = scanner.nextLine();
+						System.out.println("your enter : "+"Title : "+borrowBookT+"\t"+"Author : "+borrowBookA+"\t"+
+						"publisher : "+borrowBookP+"\t"+"your Id : "+bId +"\t"+"your name : "+bName);
+						int collect=0;
+						int noBook=0;
+						int noUser=0;
+						for(int b=0; b<userService.saveUser.size();b++) {
+							if(userService.saveUser.get(b).getUserId().contains(bId) && userService.saveUser.get(b).getUserName().contains(bName)) {
+								System.out.println("You are a member");
+								for(int a = 0; a<service.saveBook.size();a++) {
+									if(service.saveBook.get(a).getTitle().contains(borrowBookT)&& service.saveBook.get(a).getAuthor().contains(borrowBookA)
+											&& service.saveBook.get(a).getPublisher().contains(borrowBookP)) {
+										System.out.println("There are matching book");
+												collect++;
+										if(service.saveBook.get(a).isStock()>0) {
+											String title = borrowBookT;
+											String author =borrowBookA;
+											String publisher = borrowBookP;
+											long price = service.saveBook.get(a).getPrice();
+											int stock = service.saveBook.get(a).isStock();
+											service.saveBook.remove(a);
+											Book book = new Book(title, author, publisher, price, stock-1);
+											service.insertBook(book);
+											
+										}else {
+											System.out.println("This book is out of stock");
+										}
+								collect++;
+							}else {
+								noBook++;
+							}
+						}
+							}else {
+								noUser++;
+							}
+							
+						}
 						
+						if(collect==2) {
+							RentBookService.rentBook(decision,borrowBookT,bName);
+						}else if(noBook>0) {
+							System.out.println("There are no matching books");
+						}else if(noUser>0) {
+							System.out.println("There are no matching user");
+						}
+					case 2 : 
 						
 				}
-					
-				
 			}else {
-				System.out.println("The End");
-				break;
+					System.out.println("The End");
+					break;
 			}
 			
 	}
 		
 			
-		}
 		
+	}	
 		
 	}
 
