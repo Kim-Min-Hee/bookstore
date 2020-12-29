@@ -1,5 +1,9 @@
 package app;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Scanner;
 
 import javax.swing.plaf.synth.SynthOptionPaneUI;
@@ -8,6 +12,7 @@ import service.BookService;
 import service.RentBookService;
 import service.UserService;
 import vo.Book;
+import vo.HireBook;
 import vo.User;
 
 public class BookStoreApp {
@@ -102,20 +107,29 @@ public class BookStoreApp {
 			}else if(choose==3){
 				System.out.println("1. rent 2. return 3. search");
 				int decision = scanner.nextInt();
+				String borrowBookA;
+				String borrowBookT = null;
+				String borrowBookP;
+				String bId ;
+				String bName=null;
+				Calendar  cal = Calendar.getInstance();
+				cal.setTime(new Date());
+				DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+				Date date = null;
 				switch(decision) {
 					case 1 : 
 						System.out.println("Please Enter the book you want to borrow and your ID name");
 						System.out.println("the title");
 						scanner.nextLine();
-						String borrowBookT= scanner.nextLine();
+						borrowBookT= scanner.nextLine();
 						System.out.println("the author");
-						String borrowBookA = scanner.nextLine();
+						borrowBookA = scanner.nextLine();
 						System.out.println("the publisher");
-						String borrowBookP = scanner.nextLine();
+						borrowBookP = scanner.nextLine();
 						System.out.println("your Id");
-						String bId = scanner.nextLine();
+						bId = scanner.nextLine();
 						System.out.println("your name");
-						String bName = scanner.nextLine();
+						bName = scanner.nextLine();
 						System.out.println("your enter : "+"Title : "+borrowBookT+"\t"+"Author : "+borrowBookA+"\t"+
 						"publisher : "+borrowBookP+"\t"+"your Id : "+bId +"\t"+"your name : "+bName);
 						int collect=0;
@@ -130,6 +144,7 @@ public class BookStoreApp {
 										System.out.println("There are matching book");
 												collect++;
 										if(service.saveBook.get(a).isStock()>0) {
+											
 											String title = borrowBookT;
 											String author =borrowBookA;
 											String publisher = borrowBookP;
@@ -154,14 +169,36 @@ public class BookStoreApp {
 						}
 						
 						if(collect==2) {
-							RentBookService.rentBook(decision,borrowBookT,bName);
+							String nTime =df.format(cal.getTime());
+							cal.add(Calendar.DATE, 5);
+							String rTime= df.format(cal.getTime());
+							HireBook hb = new HireBook( borrowBookT,bName,nTime,rTime);
+							System.out.println(borrowBookT+"\n"+bName+"\n"+nTime+"\n"+rTime);
+							RentBookService.insertHireBook(hb);
+							RentBookService.rentBook(decision,nTime,rTime);
+							
+							
 						}else if(noBook>0) {
 							System.out.println("There are no matching books");
 						}else if(noUser>0) {
 							System.out.println("There are no matching user");
 						}
+						break;
 					case 2 : 
+						System.out.println("Return Book"+"\t"+"write your name & return Book Title");
+						System.out.println("your name");
+						scanner.nextLine();
+						String rName = scanner.nextLine();
+						System.out.println("return Book name");
+						String rTitle = scanner.nextLine();
+						String toDay= df.format(cal.getTime());
+						RentBookService.backBook(rName, rTitle,toDay);
 						
+					case 3 : 
+						System.out.println("Retrieving return information");
+						System.out.println("1. User infomation 2. Book information");
+						int ck = scanner.nextInt();
+						RentBookService.infoCk(ck);
 				}
 			}else {
 					System.out.println("The End");
@@ -172,8 +209,10 @@ public class BookStoreApp {
 		
 			
 		
+	}
+
 	}	
 		
-	}
+	
 
 

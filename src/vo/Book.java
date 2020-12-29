@@ -20,15 +20,14 @@ public class Book {
 		System.out.println("[System: new book information: "+title + author + publisher + price + stock);
 	}
 	
+	
+	
 	public String getInfo() {
 		
 		return "book Info   : "+title+"\t" + author+"\t"+ publisher+"\t" + price+"\t" + stock;
 		
 	}
 	
-//	public void setInfo() {
-//		return "book Info: "setTitle"
-//	}
 
 	
 
@@ -79,6 +78,11 @@ public class Book {
 
 	public void setStock(int stock) {
 		this.stock = stock;
+	}
+
+
+	public int getStock() {
+		return stock;
 	}
 
 }
