@@ -16,7 +16,7 @@ public class BookService {
 	
 	public BookService() {
 		Book b1 = new Book("Java standard","NamGoong","Hanbit Media",35000,3);
-		Book b2 = new Book("momo","Michael Ende","Flying dragon",15000,4);
+		Book b2 = new Book("momo2","Michael Ende","Flying dragon",15000,4);
 		Book b3 = new Book("momo","minhee","qw",15000,0);
 		Book b4 = new Book("Baekseok Authentic Poems","Hyungjin Ko","Creation and criticism",27000,7);
 		Book b5 = new Book("abc","a","b",1000,5);
@@ -55,12 +55,11 @@ public class BookService {
 		scanner.nextLine();
 		searchKey = scanner.nextLine();
 		}else if(condition==4){
-			System.out.println("write min & max price");
+			System.out.println("write min & max price"+"\n"+"write minPrice");
 			scanner.nextLine();
 			minPrice=scanner.nextLine();
-			System.out.println("write min & max price 1");
+			System.out.println("write max price");
 			maxPrice = scanner.nextInt();
-			System.out.println("write min & max price 2");
 			
 		}else if(condition==5) {
 			System.out.println("show Books sold out");
@@ -107,6 +106,7 @@ public class BookService {
 					}					
 						count++;
 					}
+					break;
 				case 5 : 
 					if(c.isStock()==0) {
 						System.out.println(c.getInfo());
@@ -124,28 +124,62 @@ public class BookService {
 		}
 		public void pickRead(int pick , Scanner scanner) {
 			scanner.nextLine();
+			System.out.println("Book name to be modified");
 			String stand = scanner.nextLine();
-			String change = scanner.nextLine();
+			int q = 0;
 			for(Book c : saveBook) {
-				if(pick==1) {
-					while(c.getTitle().contains(stand)) {
+				if(c.getTitle().equals(stand) || c.getAuthor().equals(stand) || c.getPublisher().equals(stand)) {
+					System.out.println("Name to change");
+					String change = scanner.nextLine();
+					switch (pick) {
+					case 1:
 						c.setTitle(change);
 						System.out.println(c.getInfo());
-					}
-				}else if(pick==2) {
-					if(c.getAuthor().contains(stand)) {
-						c.setAuthor(change);
+						break;
+					case 2 : 
+						c.setAuthor(stand);
+						System.out.println(c.getInfo());
+						break;
+					case 3 : 
+						c.setPublisher(stand);
 						System.out.println(c.getInfo());
 					}
-				}else if(pick==3) {
-					if(c.getPublisher().contains(stand)) {
-						c.setPublisher(change);
-						System.out.println(c.getInfo());
+				}else {
+					q++;
+					if(q==saveBook.size()) {
+						System.out.println("This is a book I don't have");
 					}
-				}
-				}
 					
+				}
+			}
 			
+//			System.out.println("Rename");
+//			String change = scanner.nextLine();
+//				if(pick==1) {
+//					for(Book c : saveBook) {
+//						while(c.getTitle().equals(stand)) {
+//							c.setTitle(change);
+//							System.out.println(c.getInfo());
+//						}
+//					}
+//					System.out.println("This is a book I don't have");
+//				}else if(pick==2) {
+//					for(Book c : saveBook) {
+//						if(c.getAuthor().equals(stand)) {
+//							c.setAuthor(change);
+//							System.out.println(c.getInfo());
+//						}
+//					}
+//					System.out.println("This is a book I don't have");
+//				}else if(pick==3) {
+//					for(Book c :  saveBook) {
+//						if(c.getPublisher().equals(stand)) {
+//							c.setPublisher(change);
+//							System.out.println(c.getInfo());
+//						}
+//					}
+//					System.out.println("This is a book I don't have");
+//				}
 		}
 	
 	public void UpdateBookInfo(){

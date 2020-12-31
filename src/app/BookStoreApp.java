@@ -46,6 +46,7 @@ public class BookStoreApp {
 					userService.insertUser(user);
 				}else if(userChoose==2) {
 					System.out.println("memberOut");
+					System.out.println("Please write the ID to withdraw");
 					scanner.nextLine();
 					String mOut = scanner.nextLine();
 					userService.memberOut(mOut, scanner);
@@ -96,14 +97,15 @@ public class BookStoreApp {
 						System.out.println("1. title 2. author 3. publisher 4. range 5. stock");
 						int condition = scanner.nextInt();
 						service.conditionRead(condition, scanner);
-					}else if(bookmenu==3){
+					}
+					}else if(bookChoose==3){
 						System.out.println("Revision inquiry");
 						System.out.println("1. title 2. author 3. publisher");
 						int pick= scanner.nextInt();
 						service.pickRead(pick,scanner);
 					}
 					
-				}
+				
 			}else if(choose==3){
 				System.out.println("1. rent 2. return 3. search");
 				int decision = scanner.nextInt();

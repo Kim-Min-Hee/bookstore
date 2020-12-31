@@ -26,7 +26,7 @@ public class UserService {
 			System.out.println("saving user info....");
 			System.out.println(user);
 			saveUser.add(user);
-			System.out.println("Success Saving Book info");
+			System.out.println("Success Saving User info");
 			
 		}
 		public void selectAllUsers() {
@@ -44,10 +44,13 @@ public class UserService {
 		public void conditionUser(int userCondition, Scanner scanner) {
 			scanner.nextLine();
 			String wjdqh = scanner.nextLine();
+			int i=0;
 			if(userCondition==1) {
 				for(User u: saveUser) {
 					if(u.getUserId().contains(wjdqh)){
 						System.out.println(u.getUserInfo());
+					}else {
+						i++;
 					}
 			}
 			
@@ -55,16 +58,25 @@ public class UserService {
 				for(User u : saveUser) {
 					if(u.getUserName().contains(wjdqh)) {
 						System.out.println(u.getUserInfo());
+					}else {
+						i++;
 					}
 				}
 			}
+			if(i>=saveUser.size()) {
+				System.out.println("No matching information");
+			}
+			
+			
 			
 		}
 		
 		public void memberOut(String mOut, Scanner scanner) {
 					for(int i=0;i<saveUser.size();i++) {
 						if(mOut.contains(saveUser.get(i).getUserId())) {
+							System.out.println("Withdrawn ID : "+saveUser.get(i).getUserId());
 							saveUser.remove(i);
+							
 						}
 							
 						
