@@ -11,11 +11,13 @@ public class RentBookService {
 	private static final char[] RentBookService = null;
 	private static final String HireBook = null;
 	
-	public void RentBookService() {
-		
+	public RentBookService() {
 		HireBook hb1 = new HireBook( "HarryPotter", "kim" ,"2020-12-29", "2021-01-03");
+		HireBook hb2 = new HireBook( "momo", "minhee" ,"2020-11-20", "2020-11-25");
 		hb.add(hb1);
+		hb.add(hb2);
 	}
+	
 	public void insertHireBook(HireBook hireBook) {
 		System.out.println("[RentalBook save service]");
 		System.out.println("saving RentalBook info....");
@@ -42,36 +44,18 @@ public class RentBookService {
 								System.out.println("you pay late fee"+"\n"+"Money to pay : "+sum);
 								
 							}
+							
 				}
 			}
 	}
-	public void infoCk(int ck){
-		Scanner scanner = new Scanner(System.in);
-		switch(ck) {
-		case 1:
-			System.out.println("Search by user information"+"\n"+"write userName");
-			String un = scanner.nextLine();
-			for(int i=0;i<hb.size();i++) {
-				if(hb.get(i).getbName().contains(un)) {
-					System.out.println(hb.get(i).HireInfo());
-				}else {
-					System.out.println("There are no books I borrowed for the contents you wrote down");
-				}
+	public void infoCk(String ifm){
+		for(HireBook h : hb) {
+			if(h.getbName().contains(ifm) || h.getBorrowBookT().contains(ifm)) {
+				System.out.println(h.HireInfo());
+			}else {
+				System.out.println("Less information and no matching information");
 			}
-			break;
-		case 2 : 
-			System.out.println("Search by bookTitle information"+"\n"+"write bookTitle");
-			String bt = scanner.nextLine();
-			for(int i=0;i<hb.size();i++) {
-				if(hb.get(i).getBorrowBookT().contains(bt)) {
-					System.out.println(hb.get(i).HireInfo());
-				}else {
-					System.out.println("There are no books I borrowed for the contents you wrote down");
-				}
-			}
-			break;
-			
-			}
+		}
 		
 		
 	}
@@ -80,21 +64,6 @@ public class RentBookService {
 	
 	
 				
-	
-	
-	
-			
-
-		
-		
-	
-		
-		
-	
-
-			
-	
-		
 
 
 

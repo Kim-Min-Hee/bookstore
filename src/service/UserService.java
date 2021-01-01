@@ -12,14 +12,14 @@ public class UserService {
 	public ArrayList<User> saveUser = new ArrayList<User>();
 
 		public UserService() {
-			User u1 = new User("me","kim", 1234567890);
-			User u2 = new User("ryu","ryu hyung taeck",1234534);
-			User u3 = new User("kwon","kwon min seok",55555555);
-			User u4 = new User("KKo","kko kko",11111111);
-			saveUser.add(u1);
-			saveUser.add(u2);
-			saveUser.add(u3);
-			saveUser.add(u4);
+//			User u1 = new User("me","kim", 1234567890);
+//			User u2 = new User("ryu","ryu hyung taeck",1234534);
+//			User u3 = new User("kwon","kwon min seok",55555555);
+//			User u4 = new User("KKo","kko kko",11111111);
+//			saveUser.add(u1);
+//			saveUser.add(u2);
+//			saveUser.add(u3);
+//			saveUser.add(u4);
 			
 		}
 		public void insertUser(User user) {
@@ -33,11 +33,17 @@ public class UserService {
 			System.out.println("[All user Searching Service]");
 			System.out.println("Searching All User Info....");
 			int a;
-			for(a=0;a<saveUser.size();a++) {
-				System.out.println(saveUser.get(a).getUserIdInfo());
-			
+			if(saveUser.size()>0) {
+				for(a=0;a<saveUser.size();a++) {
+					System.out.println(saveUser.get(a).getUserIdInfo());
+				
+				}
+				System.out.println("Success Searching All User Info!");
+			}else if(saveUser.size()==0) {
+				System.out.println("There are no members");
 			}
-			System.out.println("Success Searching All User Info!");
+			
+			
 		}
 		
 	

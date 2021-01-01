@@ -30,8 +30,9 @@ public class BookService {
 	public void insertBook(Book book) {
 		System.out.println("[book save service]");
 		System.out.println("saving book info....");
-		System.out.println(book);
 		saveBook.add(book);
+		System.out.println("Information entered  "+"Title : "+book.getTitle()+"\t"+"Author : "+book.getAuthor()+"\t"+"publisher : "+book.getPublisher()+"\t"
+		+"price : "+book.getPrice()+"\t"+"stock : "+book.getStock());
 		System.out.println("Success Saving Book info");
 	}
 	

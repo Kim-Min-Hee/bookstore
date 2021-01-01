@@ -200,7 +200,19 @@ public class BookStoreApp {
 						System.out.println("Retrieving return information");
 						System.out.println("1. User infomation 2. Book information");
 						int ck = scanner.nextInt();
-						RentBookService.infoCk(ck);
+						
+						if(ck==1) {
+							System.out.println("Search by user information"+"\n"+"write userName");
+							scanner.nextLine();
+							String ifm = scanner.nextLine();
+							RentBookService.infoCk(ifm);
+						}else if(ck==2) {
+							System.out.println("Search by bookTitle information"+"\n"+"write bookTitle");
+							scanner.nextLine();
+							String ifm = scanner.nextLine();
+							RentBookService.infoCk(ifm);
+						}
+						
 				}
 			}else {
 					System.out.println("The End");
