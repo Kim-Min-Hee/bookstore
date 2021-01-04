@@ -32,24 +32,34 @@ public class BookStoreApp {
 			
 			if(choose==1) {
 				System.out.println("1.memberRegistration 2. memberOut 3.memberCheck");
+				
 				int userChoose= scanner.nextInt();
+				
 				if(userChoose==1) {
 					System.out.println("memberRegistration");
 					System.out.println("write userId");
+				
 					scanner.nextLine();
 					String userId = scanner.nextLine();
+					
 					System.out.println("write your name");
 					String userName = scanner.nextLine();
+					
 					System.out.println("write your contact");
 					int contact = scanner.nextInt();
+				
 					User user = new User(userId, userName, contact);
 					userService.insertUser(user);
+				
 				}else if(userChoose==2) {
 					System.out.println("memberOut");
 					System.out.println("Please write the ID to withdraw");
+					
 					scanner.nextLine();
 					String mOut = scanner.nextLine();
+					
 					userService.memberOut(mOut, scanner);
+				
 				}else if(userChoose==3) {
 					System.out.println("memberCheck");
 					System.out.println("1. allcheck 2. conditionCheck");
